@@ -1,0 +1,18 @@
+draftbottle,draftb {
+
+    permission draftbottle.cmd.use
+    help 查看帮助信息
+
+    get string:id {
+        permission draftbottle.cmd.get.use
+        help 获取一个空漂流瓶
+        hook get
+    }
+
+    show {
+        permission draftbottle.cmd.show.use
+        help 输出手中漂流瓶的标识符
+        hook show
+    }
+
+}
