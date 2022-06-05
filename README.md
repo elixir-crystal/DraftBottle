@@ -1,4 +1,4 @@
-# DraftBottle
+# draft_bottle
 
 ---
 
