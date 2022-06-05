@@ -28,16 +28,16 @@ public class StorageUtils {
         }
 
         public void put(DraftBottle bottle) throws IOException {
-            File d = new File(STORAGE + SEP + bottle.throwerUUID());
+            File d = new File(STORAGE + SEP + bottle.getThrowerUUID());
             if (!d.exists()) {
                 boolean __ = d.mkdirs();
             }
-            File f = new File(STORAGE + SEP + bottle.throwerUUID() + SEP + bottle.itemUUID() + ".yml");
+            File f = new File(STORAGE + SEP + bottle.getThrowerUUID() + SEP + bottle.getItemUUID() + ".yml");
             boolean __ = f.createNewFile();
 
             YamlConfiguration y = YamlConfiguration.loadConfiguration(f);
-            y.set("content", bottle.content());
-            y.set("item", bottle.itemInside());
+            y.set("content", bottle.getContent());
+            y.set("item", bottle.getItemInside());
             y.save(f);
         }
 
@@ -62,7 +62,7 @@ public class StorageUtils {
         }
 
         public void disposeBottle(DraftBottle bottle) {
-            File f = new File(STORAGE + SEP + bottle.throwerUUID() + SEP + bottle.itemUUID() + ".yml");
+            File f = new File(STORAGE + SEP + bottle.getThrowerUUID() + SEP + bottle.getItemUUID() + ".yml");
             if (f.exists()) {
                 boolean __ = f.delete();
             }

@@ -56,12 +56,12 @@ public class ListenerBus {
             return;
         }
 
-        p.sendMessage(ConfigBus.prefix + FormatUtils.color("&e" + Bukkit.getPlayer(bottle.throwerUUID()) + ": &f") + bottle.content());
+        p.sendMessage(ConfigBus.prefix + FormatUtils.color("&e" + Bukkit.getPlayer(bottle.getThrowerUUID()) + ": &f") + bottle.getContent());
 
         if (p.getInventory().firstEmpty() == -1) {
-            p.getWorld().dropItemNaturally(p.getLocation(), bottle.itemInside());
+            p.getWorld().dropItemNaturally(p.getLocation(), bottle.getItemInside());
         } else {
-            p.getInventory().addItem(bottle.itemInside());
+            p.getInventory().addItem(bottle.getItemInside());
         }
         Utils.pool.disposeBottle(bottle);
     }

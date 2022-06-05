@@ -8,5 +8,11 @@ import java.util.UUID;
 
 @RequiredArgsConstructor
 @Getter
-public record DraftBottle(UUID throwerUUID, UUID itemUUID, String content, ItemStack itemInside) {
+public class DraftBottle {
+
+    private final UUID throwerUUID;
+    private final UUID itemUUID;
+    private final String content;
+    private final ItemStack itemInside;
+
 }
