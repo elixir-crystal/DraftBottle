@@ -15,7 +15,7 @@ repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
     maven { url = 'https://redempt.dev' }
-    maven { url = 'https://hub.spigotmc.org/nexus/content/groups/public' }
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
 }
 
 dependencies {
@@ -38,8 +38,7 @@ dependencies {
     implementation 'org.jetbrains:annotations:23.0.0'
 
     implementation 'com.github.Redempt:RedLib:master'
-    implementation 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+    // implementation 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+    compileOnly 'io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT'
 
-    // https://mvnrepository.com/artifact/io.netty/netty-buffer
-    implementation 'io.netty:netty-buffer:4.1.76.Final'
 }

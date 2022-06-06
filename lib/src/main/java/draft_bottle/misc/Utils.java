@@ -27,18 +27,22 @@ public class Utils {
         pool.create();
     }
 
-    @Deprecated
     public static ItemStack generateBottle(boolean isEmpty, String content, ItemStack itemInside, Player thrower) throws IOException {
         ItemBuilder i = new ItemBuilder(BOTTLE_TEMPLATE)
                 .setCustomModelData(isEmpty ? ConfigBus.emptyCmd : ConfigBus.nonEmptyCmd)
                 .setLore(
-                        FormatUtils.color("&f"),
-                        FormatUtils.color("&e留言: &f|" + content));
+                        FormatUtils.color("&f"));
         if (isEmpty) {
+            i.addLore(FormatUtils.color("&e留言: &f| &7空"));
+            i.addLore(FormatUtils.color("&e内容物: &f| &7空"));
+            i.addLore(FormatUtils.color("&f"));
+            i.addLore(FormatUtils.color("&7OUUID: &f| &7未绑定"));
+            i.addLore(FormatUtils.color("&7IUUID: &f| &7未绑定"));
             i.addLore(FormatUtils.color("&f"));
         } else {
             UUID ouuid = thrower.getUniqueId();
             UUID iuuid = UUID.randomUUID();
+            i.addLore(FormatUtils.color("&e留言: &f|" + content));
             i.addLore(FormatUtils.color("&e内容物: &f|" + describeItem(itemInside)));
             i.addLore(FormatUtils.color("&f"));
             i.addLore(FormatUtils.color("&7OUUID: &8|" + ouuid));
@@ -57,18 +61,17 @@ public class Utils {
         ItemMeta im = item.getItemMeta();
         assert im != null;
         if (im.hasDisplayName()) {
+            //noinspection deprecation
             return im.getDisplayName();
         } else {
             return item.getType().name();
         }
     }
 
-    @SuppressWarnings("unused")
-    @Deprecated
     public static DraftBottle parseItem(ItemStack item) {
-        if (!isDraftBottle(item)) {
-            return null;
-        }
+        // if (!isDraftBottle(item)) {
+        //     return null;
+        // }
 
         ItemMeta im = item.getItemMeta();
         String content = null;
@@ -76,6 +79,7 @@ public class Utils {
         UUID iuuid = null;
         ItemStack inside;
         assert im != null;
+        //noinspection deprecation
         for (String s : Objects.requireNonNull(im.getLore())) {
             if (s.matches(".*留言.*\\|")) {
                 content = s.replaceAll(".*留言.*\\|", "");
@@ -96,9 +100,7 @@ public class Utils {
     }
 
     public static boolean isDraftBottle(ItemStack item) {
-        ItemMeta im = item.getItemMeta();
-        assert im != null;
-        return im.getDisplayName().equals(ConfigBus.bottleName);
+        return parseItem(item) != null;
     }
 
     public static ItemStack getItemInHand(HumanEntity ety) {

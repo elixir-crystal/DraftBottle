@@ -1,9 +1,11 @@
-main: DraftBottle.PlugGividado
+main: draft_bottle.PlugGividado
 version: 0.1.0
 
 name: DraftBottle
 author: Freeze_Dolphin
 website: https://github.com/elixir-crystal/DraftBottle
+
+api-version: 1.16
 
 depend:
   - RedLib

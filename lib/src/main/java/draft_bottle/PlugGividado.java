@@ -18,7 +18,7 @@ public class PlugGividado extends JavaPlugin {
         Utils.init();
 
         cman = ConfigManager.create(this).target(ConfigBus.class).saveDefaults().load();
-        new CommandParser(this.getResource("commands.rdcml")).parse().register("draftbottle", new CommandBus());
+        new CommandParser(this.getResource("commands.rdcml")).parse().register("draftbottle", new CommandBus(this));
         new ListenerBus(this).register();
 
     }

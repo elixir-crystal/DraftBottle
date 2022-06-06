@@ -3,10 +3,23 @@ draftbottle,draftb {
     permission draftbottle.cmd.use
     help 查看帮助信息
 
-    throw string:content {
-        permission draftbottle.use.throw
-        help 扔出一个漂流瓶
-        hook throw
+//    throw string:content {
+//        permission draftbottle.use.throw
+//        help 扔出一个漂流瓶
+//        hook throw
+//    }
+
+    get {
+        permission draftbottle.use.get
+        help 获取一个空的漂流瓶
+        user player
+        hook get
+    }
+
+    reload {
+        permission draftbottle.use.reload
+        help 重载配置文件
+        hook reload
     }
 
 }
